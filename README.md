@@ -2,7 +2,9 @@
 
 ## Solution Approach
 
-	  We approached the solution by first deeply understanding the custom Domain-Specific Language (DSL) syntax and semantics. Our initial plan involved fine-tuning a model specifically to handle DSL-to-VB.NET translation. To support this, we generated a robust dataset primarily focused on the Industrial Automation domain.  
+	  We approached the solution by first deeply understanding the custom Domain-Specific Language (DSL) syntax and semantics. 
+	  Our initial plan involved fine-tuning a model specifically to handle DSL-to-VB.NET translation. 
+	  To support this, we generated a robust dataset primarily focused on the Industrial Automation domain.  
 	  
 	  Our dataset creation process followed a structured path:  
 	  	•	Base Cases Creation: Hand-crafted DSL programs and their accurate VB.NET equivalents.  
@@ -12,9 +14,35 @@
 	  	•	Noise injection  
 	  	•	Negative sampling with non-DSL code (e.g., Python)  
 	  
-	  After producing ~300 high-quality pairs, we began fine-tuning several shortlisted models. However, due to performance limitations (mainly from insufficient data and time constraints), we pivoted to a prompt engineering approach instead of full model fine-tuning.  
+	  After producing ~300 high-quality pairs, we began fine-tuning several shortlisted models. 
+	  However, due to performance limitations (mainly from insufficient data and time constraints), 
+	  we pivoted to a prompt engineering approach instead of full model fine-tuning.  
 	  
-	  Ultimately, we adopted Google Gemini, which provided a powerful and accessible interface for accurate DSL-to-VB.NET conversion through prompt-based generation.  
+	  Ultimately, we adopted Google Gemini, which provided a powerful and accessible interface for 
+	  accurate DSL-to-VB.NET conversion through prompt-based generation.  
+	  ## Visual Overview
+
+```mermaid
+flowchart TD
+    A0["Domain-Specific Language (DSL)
+"]
+    A1["VB.NET (Target Language)
+"]
+    A2["Prompt Engineering
+"]
+    A3["Google Gemini (Translation Engine)
+"]
+    A4["DSL-to-VB.NET Translation Process
+"]
+    A5["Custom DSL Syntax Rules
+"]
+    A0 -- "Is translated to" --> A1
+    A5 -- "Defines syntax for" --> A0
+    A2 -- "Guides translation by" --> A3
+    A3 -- "Generates" --> A1
+    A4 -- "Processes input" --> A0
+    A4 -- "Leverages" --> A3
+```
 
 ## Implementation Details  
 
@@ -50,5 +78,7 @@
 
 ## Expected Output
 
-	The output is a clean, syntactically correct, and logically equivalent VB.NET version of the input DSL code. This output preserves control flow, function calls, and custom operations while optimizing for real-world execution. It is ready to be integrated into larger VB.NET projects and tested for correctness.  
+	The output is a clean, syntactically correct, and logically equivalent VB.NET version of the input DSL code. 
+	This output preserves control flow, function calls, and custom operations while optimizing for real-world execution. 
+	It is ready to be integrated into larger VB.NET projects and tested for correctness.  
  	For example, a BLOCK in DSL becomes a Sub, while CALL functions are mapped to standard VB.NET Sub or Function calls.
