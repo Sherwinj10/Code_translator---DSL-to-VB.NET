@@ -1,6 +1,6 @@
 #  Code_translator -- DSL-to-VB.NET
 
-## Solution Approach
+## Approach
 
 	  We approached the solution by first deeply understanding the custom Domain-Specific Language (DSL) syntax and semantics. 
 	  Our initial plan involved fine-tuning a model specifically to handle DSL-to-VB.NET translation. 
